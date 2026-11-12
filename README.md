@@ -1,4 +1,4 @@
-# INVENTORY UMKM
+## Inventory UMKM
 
 ### Sistem Informasi Pengelolaan Persediaan Barang UMKM
 
@@ -11,39 +11,64 @@
 
 ## 2. Deskripsi Project
 
-Inventory UMKM merupakan aplikasi berbasis web yang dibuat untuk membantu pelaku Usaha Mikro, Kecil, dan Menengah (UMKM) dalam mengelola persediaan barang.
+Sistem Informasi Inventory UMKM merupakan aplikasi berbasis web yang dibuat menggunakan framework Laravel untuk membantu pengelolaan persediaan barang pada usaha mikro, kecil, dan menengah (UMKM).
 
-Aplikasi ini menyediakan informasi stok barang, barang masuk, barang keluar, status persediaan, analisis stok, serta rekomendasi pengadaan barang.
+Aplikasi ini membantu pengguna mengetahui jumlah stok barang, memantau kondisi persediaan, melakukan analisis stok, serta memberikan rekomendasi pengadaan barang berdasarkan target persediaan.
 
-## 3. Tujuan Aplikasi
+Project ini menggunakan penyimpanan data berbasis array PHP dan template Blade tanpa menggunakan database untuk pengolahan data barang.
 
-- Mempermudah pemantauan persediaan barang.
+## 3. Tujuan Project
+
+- Mempermudah pengelolaan data persediaan barang.
 - Mengetahui jumlah stok akhir setiap barang.
-- Mengidentifikasi barang dengan stok rendah atau habis.
-- Membantu menentukan kebutuhan pengadaan barang.
-- Menghitung estimasi biaya pembelian barang.
+- Mengidentifikasi barang dengan stok aman, menipis, dan habis.
+- Membantu menentukan prioritas pengadaan barang.
+- Menghitung estimasi biaya pengadaan barang.
 
-## 4. Fitur Aplikasi
+## 4. Teknologi yang Digunakan
 
-1. Dashboard ringkasan persediaan.
-2. Daftar seluruh data barang.
-3. Pengelompokan barang berdasarkan kategori.
-4. Detail informasi barang.
-5. Pemantauan stok rendah.
-6. Analisis persediaan barang.
-7. Rekomendasi pengadaan berdasarkan prioritas.
-
-## 5. Teknologi yang Digunakan
-
-- PHP 8.4.1 atau lebih baru
+- PHP 8.4
 - Laravel 13
+- Composer
 - HTML
 - CSS
 - Bootstrap 5
-- Blade Template Engine
+- Blade Template
 - Visual Studio Code
 
-## 6. Struktur Project
+## 5. Fitur Aplikasi
+
+1. **Dashboard** — menampilkan ringkasan total barang, total stok, stok aman, stok menipis, stok habis, dan nilai persediaan.
+2. **Data Barang** — menampilkan daftar barang beserta kode, kategori, stok awal, barang masuk, barang keluar, dan stok akhir.
+3. **Kategori Barang** — menampilkan barang berdasarkan kategori makanan, minuman, dan perlengkapan.
+4. **Detail Barang** — menampilkan informasi lengkap suatu barang.
+5. **Stok Rendah** — menampilkan barang yang stoknya berada pada atau di bawah batas minimum.
+6. **Analisis Stok** — menghitung kondisi persediaan dan kebutuhan pengadaan.
+7. **Rekomendasi Pengadaan** — mengurutkan barang berdasarkan tingkat prioritas dan menghitung estimasi biaya pengadaan.
+
+## 6. Rumus Perhitungan
+
+**Stok Akhir**
+
+Stok Akhir = Stok Awal + Barang Masuk - Barang Keluar
+
+**Kebutuhan Pengadaan**
+
+Kebutuhan = Stok Target - Stok Akhir
+
+Jika hasil perhitungan kebutuhan kurang dari nol, maka kebutuhan pengadaan dianggap 0.
+
+**Estimasi Biaya**
+
+Estimasi Biaya = Kebutuhan Pengadaan × Harga Satuan
+
+## 7. Kategori Status Stok
+
+- **Aman:** stok akhir lebih besar dari stok minimum.
+- **Menipis:** stok akhir lebih kecil atau sama dengan stok minimum.
+- **Habis:** stok akhir bernilai 0.
+
+## 8. Struktur Folder Penting
 
 ```text
 inventory-umkm/
@@ -64,82 +89,51 @@ inventory-umkm/
 ├── routes/
 │   └── web.php
 ├── public/
-├── storage/
-├── .env.example
 ├── composer.json
 └── README.md
 ```
 
-## 7. Cara Menjalankan Aplikasi
+## 9. Cara Menjalankan Aplikasi
 
-Persyaratan:
+1. Pastikan PHP dan Composer sudah terinstal.
+2. Clone repository:
 
-- PHP minimal 8.4.1
-- Composer
-- Visual Studio Code
+```bash
+git clone https://github.com/fildzah02/inventaris-umkm.git
+```
 
-Langkah menjalankan:
+3. Masuk ke folder project:
 
-1. Clone repository project.
-2. Buka folder project di VS Code.
-3. Jalankan perintah:
+```bash
+cd inventaris-umkm
+```
+
+4. Install dependency:
 
 ```bash
 composer install
 ```
 
-4. Salin file konfigurasi:
+5. Salin file konfigurasi:
 
-```powershell
-Copy-Item .env.example .env
+```bash
+copy .env.example .env
 ```
 
-5. Buat application key:
+6. Buat application key:
 
 ```bash
 php artisan key:generate
 ```
 
-6. Jalankan aplikasi:
+7. Jalankan aplikasi:
 
 ```bash
 php artisan serve
 ```
 
-7. Buka browser:
+8. Buka browser:
 
 ```text
 http://127.0.0.1:8000
 ```
-
-## 8. Metode Perhitungan
-
-**Stok Akhir**
-
-Stok Akhir = Stok Awal + Barang Masuk - Barang Keluar
-
-**Kebutuhan Pengadaan**
-
-Kebutuhan = Maksimum (0, Stok Target - Stok Akhir)
-
-**Estimasi Biaya**
-
-Estimasi Biaya = Kebutuhan Pengadaan × Harga Satuan
-
-Status persediaan:
-
-- Aman: stok akhir lebih besar dari stok minimum.
-- Menipis: stok akhir lebih kecil atau sama dengan stok minimum.
-- Habis: stok akhir sama dengan nol.
-
-## 9. Hasil Pengujian
-
-| Keterangan          |       Hasil |
-| ------------------- | ----------: |
-| Total Barang        |          15 |
-| Total Stok          |    158 unit |
-| Stok Aman           |    7 barang |
-| Stok Menipis        |    7 barang |
-| Stok Habis          |    1 barang |
-| Kebutuhan Pengadaan |    447 unit |
-| Estimasi Biaya      | Rp4.213.000 |
