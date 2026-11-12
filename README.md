@@ -46,7 +46,29 @@ Project ini menggunakan penyimpanan data berbasis array PHP dan template Blade t
 6. **Analisis Stok** — menghitung kondisi persediaan dan kebutuhan pengadaan.
 7. **Rekomendasi Pengadaan** — mengurutkan barang berdasarkan tingkat prioritas dan menghitung estimasi biaya pengadaan.
 
-## 6. Rumus Perhitungan
+## 6. Screenshot Aplikasi
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Data Barang
+
+![Data Barang](screenshots/data-barang.png)
+
+### Detail Barang
+
+![Detail Barang](screenshots/detail-barang.png)
+
+### Analisis Stok
+
+![Analisis Stok](screenshots/analisis-stok.png)
+
+### Rekomendasi Pengadaan
+
+![Rekomendasi Pengadaan](screenshots/rekomendasi.png)
+
+## 7. Rumus Perhitungan
 
 **Stok Akhir**
 
@@ -62,13 +84,13 @@ Jika hasil perhitungan kebutuhan kurang dari nol, maka kebutuhan pengadaan diang
 
 Estimasi Biaya = Kebutuhan Pengadaan × Harga Satuan
 
-## 7. Kategori Status Stok
+## 8. Kategori Status Stok
 
 - **Aman:** stok akhir lebih besar dari stok minimum.
 - **Menipis:** stok akhir lebih kecil atau sama dengan stok minimum.
 - **Habis:** stok akhir bernilai 0.
 
-## 8. Struktur Folder Penting
+## 9. Struktur Folder Penting
 
 ```text
 inventory-umkm/
@@ -93,7 +115,7 @@ inventory-umkm/
 └── README.md
 ```
 
-## 9. Cara Menjalankan Aplikasi
+## 10. Cara Menjalankan Aplikasi
 
 1. Pastikan PHP dan Composer sudah terinstal.
 2. Clone repository:
